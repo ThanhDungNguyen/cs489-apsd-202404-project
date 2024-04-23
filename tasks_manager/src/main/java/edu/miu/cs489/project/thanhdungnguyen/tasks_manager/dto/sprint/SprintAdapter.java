@@ -9,8 +9,13 @@ public class SprintAdapter {
     }
 
     public static SprintResponse getSprintResponseFromSprint(Sprint sprint) {
+        return new SprintResponse(sprint.getSprintId(), sprint.getTitle(), sprint.getStartDate(), sprint.getEndDate());
+    }
+
+    public static SprintResponseWithTasks getSprintResponseWithTasksFromSprint(Sprint sprint) {
         var taskResponses = sprint.getTasks().stream().map(task -> TaskAdapter.getTaskResponseFromTask(task)).toList();
-        return new SprintResponse(sprint.getSprintId(), sprint.getTitle(), sprint.getStartDate(), sprint.getEndDate(),
+        return new SprintResponseWithTasks(sprint.getSprintId(), sprint.getTitle(), sprint.getStartDate(),
+                sprint.getEndDate(),
                 taskResponses);
     }
 }
