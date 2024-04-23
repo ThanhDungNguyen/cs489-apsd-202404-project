@@ -1,6 +1,7 @@
 package edu.miu.cs489.project.thanhdungnguyen.tasks_manager.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import edu.miu.cs489.project.thanhdungnguyen.tasks_manager.dto.sprint.SprintAdapter;
 import edu.miu.cs489.project.thanhdungnguyen.tasks_manager.dto.sprint.SprintRequest;
@@ -9,6 +10,7 @@ import edu.miu.cs489.project.thanhdungnguyen.tasks_manager.repository.SprintRepo
 import edu.miu.cs489.project.thanhdungnguyen.tasks_manager.service.SprintService;
 import jakarta.validation.Valid;
 
+@Service
 public class SprintServiceImpl implements SprintService {
     @Autowired
     private SprintRepository sprintRepository;
