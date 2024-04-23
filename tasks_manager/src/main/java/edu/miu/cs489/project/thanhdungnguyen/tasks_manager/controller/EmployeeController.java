@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import edu.miu.cs489.project.thanhdungnguyen.tasks_manager.dto.employee.EmployeeRequest;
 import edu.miu.cs489.project.thanhdungnguyen.tasks_manager.dto.employee.EmployeeResponse;
+import edu.miu.cs489.project.thanhdungnguyen.tasks_manager.exception.NoDataException;
 import edu.miu.cs489.project.thanhdungnguyen.tasks_manager.service.EmployeeService;
 import jakarta.validation.Valid;
 
@@ -20,8 +21,12 @@ public class EmployeeController {
     private EmployeeService employeeService;
 
     @PostMapping(value = "/add")
-    public ResponseEntity<EmployeeResponse> addNewEmployee(@RequestBody @Valid EmployeeRequest employeeRequest) {
-        var addedEmployeeResponse = employeeService.addNewEmployee(employeeRequest);
-        return new ResponseEntity<>(addedEmployeeResponse, HttpStatus.CREATED);
+    public ResponseEntity<?> addNewEmployee(@RequestBody @Valid EmployeeRequest employeeRequest) {
+        try {
+            var addedEmployeeResponse = employeeService.addNewEmployee(employeeRequest);
+            return new ResponseEntity<EmployeeResponse>(addedEmployeeResponse, HttpStatus.CREATED);
+        } catch (NoDataException exception) {
+            return new ResponseEntity<String>(exception.getMessage(), HttpStatus.NOT_FOUND);
+        }
     }
 }
