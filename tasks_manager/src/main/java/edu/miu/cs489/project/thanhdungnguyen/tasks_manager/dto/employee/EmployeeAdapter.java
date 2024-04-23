@@ -9,13 +9,19 @@ public class EmployeeAdapter {
     }
 
     public static EmployeeResponse getEmployeeResponseFromEmployee(Employee employee) {
-        var managerResponse = EmployeeAdapter.getManagerResponseFromManager(employee.getManager());
         return new EmployeeResponse(employee.getEmployeeId(), employee.getFirstName(), employee.getLastName(),
+                employee.getPosition());
+    }
+
+    public static EmployeeResponseWithManager getEmployeeResponseWithManagerFromEmployee(Employee employee) {
+        var managerResponse = EmployeeAdapter.getManagerResponseFromManager(employee.getManager());
+        return new EmployeeResponseWithManager(employee.getEmployeeId(), employee.getFirstName(),
+                employee.getLastName(),
                 employee.getPosition(), managerResponse);
     }
 
     public static EmployeeResponse getManagerResponseFromManager(Employee employee) {
         return new EmployeeResponse(employee.getEmployeeId(), employee.getFirstName(), employee.getLastName(),
-                employee.getPosition(), null);
+                employee.getPosition());
     }
 }
