@@ -19,7 +19,7 @@ public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
 
-    @PostMapping(value = "/new")
+    @PostMapping(value = "/add")
     public ResponseEntity<EmployeeResponse> addNewEmployee(@RequestBody @Valid EmployeeRequest employeeRequest) {
         var addedEmployeeResponse = employeeService.addNewEmployee(employeeRequest);
         return new ResponseEntity<>(addedEmployeeResponse, HttpStatus.CREATED);
