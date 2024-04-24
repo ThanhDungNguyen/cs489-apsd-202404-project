@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import edu.miu.cs489.project.thanhdungnguyen.tasks_manager.dto.employee.EmployeeAdapter;
 import edu.miu.cs489.project.thanhdungnguyen.tasks_manager.dto.employee.EmployeeRequest;
 import edu.miu.cs489.project.thanhdungnguyen.tasks_manager.dto.employee.EmployeeResponse;
+import edu.miu.cs489.project.thanhdungnguyen.tasks_manager.dto.employee.EmployeeFullResponse;
 import edu.miu.cs489.project.thanhdungnguyen.tasks_manager.exception.NoDataException;
 import edu.miu.cs489.project.thanhdungnguyen.tasks_manager.repository.EmployeeRepository;
 import edu.miu.cs489.project.thanhdungnguyen.tasks_manager.service.EmployeeService;
@@ -26,6 +27,13 @@ public class EmployeeServiceImpl implements EmployeeService {
         employee.setManager(manager);
         employeeRepository.save(employee);
         return EmployeeAdapter.getEmployeeResponseFromEmployee(employee);
+    }
+
+    @Override
+    public EmployeeFullResponse getEmployeeById(Long employeeId) throws NoDataException {
+        var employee = employeeRepository.findById(employeeId).orElseThrow(
+                () -> new NoDataException(String.format("No employee with ID, %d, was found", employeeId)));
+        return EmployeeAdapter.getEmployeeFullResponseFromEmployee(employee);
     }
 
 }

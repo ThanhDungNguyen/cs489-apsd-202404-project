@@ -13,9 +13,9 @@ public class EmployeeAdapter {
                 employee.getPosition());
     }
 
-    public static EmployeeResponseWithManager getEmployeeResponseWithManagerFromEmployee(Employee employee) {
+    public static EmployeeFullResponse getEmployeeFullResponseFromEmployee(Employee employee) {
         var managerResponse = EmployeeAdapter.getManagerResponseFromManager(employee.getManager());
-        return new EmployeeResponseWithManager(employee.getEmployeeId(), employee.getFirstName(),
+        return new EmployeeFullResponse(employee.getEmployeeId(), employee.getFirstName(),
                 employee.getLastName(),
                 employee.getPosition(), managerResponse);
     }
