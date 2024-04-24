@@ -10,4 +10,6 @@ public interface TaskService {
     TaskResponse addNewTask(@Valid TaskRequest taskRequest);
 
     TaskResponseWithEmployee assignTaskToEmployee(Long taskId, Long employeeId) throws NoDataException;
+
+    TaskResponseWithEmployee updateTask(Long taskId, TaskRequest updatedTask) throws NoDataException;
 }

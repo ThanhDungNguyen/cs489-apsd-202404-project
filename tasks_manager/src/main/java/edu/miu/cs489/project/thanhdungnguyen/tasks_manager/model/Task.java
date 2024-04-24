@@ -2,6 +2,7 @@ package edu.miu.cs489.project.thanhdungnguyen.tasks_manager.model;
 
 import java.time.LocalDateTime;
 
+import edu.miu.cs489.project.thanhdungnguyen.tasks_manager.dto.task.TaskRequest;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -27,4 +28,19 @@ public class Task {
     private LocalDateTime finishTime;
     @ManyToOne
     private Employee assignedEmployee;
+
+    public void update(TaskRequest taskRequest) {
+        if (taskRequest.title() != null)
+            title = taskRequest.title();
+        if (taskRequest.priority() != null)
+            priority = taskRequest.priority();
+        if (taskRequest.description() != null)
+            description = taskRequest.description();
+        if (taskRequest.estimatedTime() != null)
+            estimatedTime = taskRequest.estimatedTime();
+        if (taskRequest.startTime() != null)
+            startTime = taskRequest.startTime();
+        if (taskRequest.finishTime() != null)
+            finishTime = taskRequest.finishTime();
+    }
 }

@@ -3,6 +3,7 @@ package edu.miu.cs489.project.thanhdungnguyen.tasks_manager.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -24,7 +25,7 @@ public class TaskController {
     private TaskService taskService;
 
     @PostMapping(value = "/add")
-    public ResponseEntity<TaskResponse> addNewTask(@RequestBody @Valid TaskRequest taskRequest) {
+    public ResponseEntity<TaskResponse> addNewTask(@RequestBody TaskRequest taskRequest) {
         var newTaskResponse = taskService.addNewTask(taskRequest);
         return new ResponseEntity<>(newTaskResponse, HttpStatus.CREATED);
     }
@@ -33,6 +34,16 @@ public class TaskController {
     public ResponseEntity<?> assignTaskToEmployee(@PathVariable Long taskId, @PathVariable Long employeeId) {
         try {
             var updatedTaskResponse = taskService.assignTaskToEmployee(taskId, employeeId);
+            return new ResponseEntity<TaskResponseWithEmployee>(updatedTaskResponse, HttpStatus.ACCEPTED);
+        } catch (NoDataException exception) {
+            return new ResponseEntity<String>(exception.getMessage(), HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @PatchMapping(value = "/{taskId}/edit")
+    public ResponseEntity<?> updateTask(@PathVariable Long taskId, @RequestBody TaskRequest taskRequest) {
+        try {
+            var updatedTaskResponse = taskService.updateTask(taskId, taskRequest);
             return new ResponseEntity<TaskResponseWithEmployee>(updatedTaskResponse, HttpStatus.ACCEPTED);
         } catch (NoDataException exception) {
             return new ResponseEntity<String>(exception.getMessage(), HttpStatus.NOT_FOUND);

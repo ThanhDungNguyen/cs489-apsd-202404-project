@@ -39,4 +39,13 @@ public class TaskServiceImpl implements TaskService {
         return TaskAdapter.getTaskResponseWithEmployeeFromTask(task);
     }
 
+    @Override
+    public TaskResponseWithEmployee updateTask(Long taskId, TaskRequest updatedTask) throws NoDataException {
+        var task = taskRepository.findById(taskId)
+                .orElseThrow(() -> new NoDataException(String.format("Task with ID, %d, cannot be found", taskId)));
+        task.update(updatedTask);
+        taskRepository.save(task);
+        return TaskAdapter.getTaskResponseWithEmployeeFromTask(task);
+    }
+
 }
