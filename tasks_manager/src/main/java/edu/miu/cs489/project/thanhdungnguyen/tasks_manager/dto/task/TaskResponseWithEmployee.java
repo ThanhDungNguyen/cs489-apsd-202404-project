@@ -2,12 +2,15 @@ package edu.miu.cs489.project.thanhdungnguyen.tasks_manager.dto.task;
 
 import java.time.LocalDateTime;
 
-public record TaskResponse(Long id,
+import edu.miu.cs489.project.thanhdungnguyen.tasks_manager.dto.employee.EmployeeResponse;
+
+public record TaskResponseWithEmployee(Long id,
         String title,
         Integer priority,
         String description,
         Double estimatedTime,
         LocalDateTime startTime,
-        LocalDateTime finishTime) {
+        LocalDateTime finishTime,
+        EmployeeResponse assignedEmployee) {
 
 }

@@ -10,8 +10,15 @@ public class TaskAdapter {
     }
 
     public static TaskResponse getTaskResponseFromTask(Task task) {
+        return new TaskResponse(task.getTaskId(), task.getTitle(), task.getPriority(), task.getDescription(),
+                task.getEstimatedTime(),
+                task.getStartTime(), task.getFinishTime());
+    }
+
+    public static TaskResponseWithEmployee getTaskResponseWithEmployeeFromTask(Task task) {
         var employeeResponse = EmployeeAdapter.getEmployeeResponseFromEmployee(task.getAssignedEmployee());
-        return new TaskResponse(task.getTitle(), task.getPriority(), task.getDescription(), task.getEstimatedTime(),
+        return new TaskResponseWithEmployee(task.getTaskId(), task.getTitle(), task.getPriority(),
+                task.getDescription(), task.getEstimatedTime(),
                 task.getStartTime(), task.getFinishTime(), employeeResponse);
     }
 }
