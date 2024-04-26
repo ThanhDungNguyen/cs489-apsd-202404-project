@@ -12,7 +12,7 @@ import edu.miu.cs489.project.thanhdungnguyen.tasks_manager.utils.service.JWTMana
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping(value = { "/adsweb/api/v1/service" })
+@RequestMapping(value = { "/tskmgr/api/service" })
 public class UserAuthController {
     private JWTManagementUtilityService jwtManagementUtilityService;
     private AuthenticationManager authenticationManager;
