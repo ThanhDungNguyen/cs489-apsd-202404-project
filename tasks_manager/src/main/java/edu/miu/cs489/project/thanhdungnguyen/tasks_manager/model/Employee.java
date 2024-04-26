@@ -21,7 +21,6 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -35,15 +34,16 @@ public class Employee implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long employeeId;
+    @NotBlank(message = "First name is required")
     private String firstName;
+    @NotBlank(message = "Last name is required")
     private String lastName;
     private String position;
     @Column(nullable = false, unique = true)
-    @NotBlank(message = "* Username is required")
+    @NotBlank(message = "Username is required")
     private String username;
     @Column(nullable = false)
-    @NotBlank(message = "* Password is required")
-    @Size(min = 8)
+    @NotBlank(message = "Password is required")
     private String password;
     @Email
     private String email;
