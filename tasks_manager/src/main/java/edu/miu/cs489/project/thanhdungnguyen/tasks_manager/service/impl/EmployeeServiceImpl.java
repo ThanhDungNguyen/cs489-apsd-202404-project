@@ -9,7 +9,7 @@ import edu.miu.cs489.project.thanhdungnguyen.tasks_manager.dto.employee.Employee
 import edu.miu.cs489.project.thanhdungnguyen.tasks_manager.dto.employee.EmployeeRequest;
 import edu.miu.cs489.project.thanhdungnguyen.tasks_manager.dto.employee.EmployeeResponse;
 import edu.miu.cs489.project.thanhdungnguyen.tasks_manager.dto.employee.EmployeeFullResponse;
-import edu.miu.cs489.project.thanhdungnguyen.tasks_manager.exception.NoDataException;
+import edu.miu.cs489.project.thanhdungnguyen.tasks_manager.exception.DataNotFoundException;
 import edu.miu.cs489.project.thanhdungnguyen.tasks_manager.model.Role;
 import edu.miu.cs489.project.thanhdungnguyen.tasks_manager.repository.EmployeeRepository;
 import edu.miu.cs489.project.thanhdungnguyen.tasks_manager.repository.RoleRepository;
@@ -24,13 +24,13 @@ public class EmployeeServiceImpl implements EmployeeService {
     private RoleRepository roleRepository;
 
     @Override
-    public EmployeeResponse addNewEmployee(@Valid EmployeeRequest employeeRequest) throws NoDataException {
+    public EmployeeResponse addNewEmployee(@Valid EmployeeRequest employeeRequest) throws DataNotFoundException {
         var employee = EmployeeAdapter.getEmployeeFromEmployeeRequest(employeeRequest);
 
         var managerId = employeeRequest.managerId();
         var manager = managerId == null ? null
                 : employeeRepository.findById(managerId).orElseThrow(
-                        () -> new NoDataException(String.format("No manager with ID, %d, was found", managerId)));
+                        () -> new DataNotFoundException(String.format("No manager with ID, %d, was found", managerId)));
         employee.setManager(manager);
 
         var roles = new ArrayList<Role>();
@@ -50,9 +50,9 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public EmployeeFullResponse getEmployeeById(Long employeeId) throws NoDataException {
+    public EmployeeFullResponse getEmployeeById(Long employeeId) throws DataNotFoundException {
         var employee = employeeRepository.findById(employeeId).orElseThrow(
-                () -> new NoDataException(String.format("No employee with ID, %d, was found", employeeId)));
+                () -> new DataNotFoundException(String.format("No employee with ID, %d, was found", employeeId)));
         return EmployeeAdapter.getEmployeeFullResponseFromEmployee(employee);
     }
 

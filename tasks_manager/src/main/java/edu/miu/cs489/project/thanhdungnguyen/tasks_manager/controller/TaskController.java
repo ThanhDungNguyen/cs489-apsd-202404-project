@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import edu.miu.cs489.project.thanhdungnguyen.tasks_manager.dto.task.TaskRequest;
 import edu.miu.cs489.project.thanhdungnguyen.tasks_manager.dto.task.TaskResponse;
 import edu.miu.cs489.project.thanhdungnguyen.tasks_manager.dto.task.TaskResponseWithEmployee;
-import edu.miu.cs489.project.thanhdungnguyen.tasks_manager.exception.NoDataException;
+import edu.miu.cs489.project.thanhdungnguyen.tasks_manager.exception.DataNotFoundException;
 import edu.miu.cs489.project.thanhdungnguyen.tasks_manager.service.TaskService;
 
 @RestController
@@ -34,7 +34,7 @@ public class TaskController {
         try {
             var updatedTaskResponse = taskService.assignTaskToEmployee(taskId, employeeId);
             return new ResponseEntity<TaskResponseWithEmployee>(updatedTaskResponse, HttpStatus.ACCEPTED);
-        } catch (NoDataException exception) {
+        } catch (DataNotFoundException exception) {
             return new ResponseEntity<String>(exception.getMessage(), HttpStatus.NOT_FOUND);
         }
     }
@@ -44,7 +44,7 @@ public class TaskController {
         try {
             var updatedTaskResponse = taskService.updateTask(taskId, taskRequest);
             return new ResponseEntity<TaskResponseWithEmployee>(updatedTaskResponse, HttpStatus.ACCEPTED);
-        } catch (NoDataException exception) {
+        } catch (DataNotFoundException exception) {
             return new ResponseEntity<String>(exception.getMessage(), HttpStatus.NOT_FOUND);
         }
     }

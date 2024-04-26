@@ -7,7 +7,7 @@ import edu.miu.cs489.project.thanhdungnguyen.tasks_manager.dto.task.TaskAdapter;
 import edu.miu.cs489.project.thanhdungnguyen.tasks_manager.dto.task.TaskRequest;
 import edu.miu.cs489.project.thanhdungnguyen.tasks_manager.dto.task.TaskResponse;
 import edu.miu.cs489.project.thanhdungnguyen.tasks_manager.dto.task.TaskResponseWithEmployee;
-import edu.miu.cs489.project.thanhdungnguyen.tasks_manager.exception.NoDataException;
+import edu.miu.cs489.project.thanhdungnguyen.tasks_manager.exception.DataNotFoundException;
 import edu.miu.cs489.project.thanhdungnguyen.tasks_manager.repository.EmployeeRepository;
 import edu.miu.cs489.project.thanhdungnguyen.tasks_manager.repository.TaskRepository;
 import edu.miu.cs489.project.thanhdungnguyen.tasks_manager.service.TaskService;
@@ -28,21 +28,21 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public TaskResponseWithEmployee assignTaskToEmployee(Long taskId, Long employeeId) throws NoDataException {
+    public TaskResponseWithEmployee assignTaskToEmployee(Long taskId, Long employeeId) throws DataNotFoundException {
         var task = taskRepository.findById(taskId)
-                .orElseThrow(() -> new NoDataException(String.format("Task with ID, %d, cannot be found", taskId)));
+                .orElseThrow(() -> new DataNotFoundException(String.format("Task with ID, %d, cannot be found", taskId)));
         var employee = employeeRepository.findById(employeeId)
                 .orElseThrow(
-                        () -> new NoDataException(String.format("Employee with ID, %d, cannot be found", employeeId)));
+                        () -> new DataNotFoundException(String.format("Employee with ID, %d, cannot be found", employeeId)));
         task.setAssignedEmployee(employee);
         taskRepository.save(task);
         return TaskAdapter.getTaskResponseWithEmployeeFromTask(task);
     }
 
     @Override
-    public TaskResponseWithEmployee updateTask(Long taskId, TaskRequest updatedTask) throws NoDataException {
+    public TaskResponseWithEmployee updateTask(Long taskId, TaskRequest updatedTask) throws DataNotFoundException {
         var task = taskRepository.findById(taskId)
-                .orElseThrow(() -> new NoDataException(String.format("Task with ID, %d, cannot be found", taskId)));
+                .orElseThrow(() -> new DataNotFoundException(String.format("Task with ID, %d, cannot be found", taskId)));
         task.update(updatedTask);
         taskRepository.save(task);
         return TaskAdapter.getTaskResponseWithEmployeeFromTask(task);

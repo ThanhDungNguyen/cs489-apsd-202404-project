@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import edu.miu.cs489.project.thanhdungnguyen.tasks_manager.dto.employee.EmployeeRequest;
 import edu.miu.cs489.project.thanhdungnguyen.tasks_manager.dto.employee.EmployeeResponse;
 import edu.miu.cs489.project.thanhdungnguyen.tasks_manager.dto.employee.EmployeeFullResponse;
-import edu.miu.cs489.project.thanhdungnguyen.tasks_manager.exception.NoDataException;
+import edu.miu.cs489.project.thanhdungnguyen.tasks_manager.exception.DataNotFoundException;
 import edu.miu.cs489.project.thanhdungnguyen.tasks_manager.service.EmployeeService;
 import jakarta.validation.Valid;
 
@@ -28,7 +28,7 @@ public class EmployeeController {
         try {
             var addedEmployeeResponse = employeeService.addNewEmployee(employeeRequest);
             return new ResponseEntity<EmployeeResponse>(addedEmployeeResponse, HttpStatus.CREATED);
-        } catch (NoDataException exception) {
+        } catch (DataNotFoundException exception) {
             return new ResponseEntity<String>(exception.getMessage(), HttpStatus.NOT_FOUND);
         }
     }
@@ -38,7 +38,7 @@ public class EmployeeController {
         try {
             var employeeResponse = employeeService.getEmployeeById(employeeId);
             return new ResponseEntity<EmployeeFullResponse>(employeeResponse, HttpStatus.OK);
-        } catch (NoDataException exception) {
+        } catch (DataNotFoundException exception) {
             return new ResponseEntity<String>(exception.getMessage(), HttpStatus.NOT_FOUND);
         }
     }

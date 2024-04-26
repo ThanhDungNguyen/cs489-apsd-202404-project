@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import edu.miu.cs489.project.thanhdungnguyen.tasks_manager.exception.NoDataException;
+import edu.miu.cs489.project.thanhdungnguyen.tasks_manager.exception.DataNotFoundException;
 
 @RestControllerAdvice
 public class WebAPIExceptionHandler {
-    @ExceptionHandler(NoDataException.class)
+    @ExceptionHandler(DataNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public Map<String, String> handlePublisherNotFoundException(NoDataException noDataException) {
+    public Map<String, String> handlePublisherNotFoundException(DataNotFoundException noDataException) {
         Map<String, String> errorMessageMap = new HashMap<>();
         errorMessageMap.put("errorMessage", noDataException.getMessage());
         return errorMessageMap;
