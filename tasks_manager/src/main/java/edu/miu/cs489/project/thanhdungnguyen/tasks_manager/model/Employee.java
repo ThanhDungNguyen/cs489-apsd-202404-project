@@ -48,7 +48,7 @@ public class Employee implements UserDetails {
     private Employee manager;
     @OneToMany(mappedBy = "assignedEmployee")
     private List<Task> tasks;
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "employees_roles", joinColumns = {
             @JoinColumn(name = "EMPLOYEE_ID", referencedColumnName = "employeeId") }, inverseJoinColumns = {
                     @JoinColumn(name = "ROLE_ID", referencedColumnName = "roleId") })

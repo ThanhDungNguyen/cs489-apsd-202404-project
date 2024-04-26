@@ -29,17 +29,16 @@ public class TasksManagerApplication {
 
 	@PostConstruct
 	public void initAdminUser() {
-		var adminUser = employeeRepository.findByUsername("admin");
-		if (!adminUser.isPresent()) {
-			List<Role> listAdminRoles = new ArrayList<>();
-			var adminRole = roleRepository.findByName("admin").orElse(new Role(null, "admin", null));
-			listAdminRoles.add(adminRole);
+		var adminRole = new Role(null, "admin", null);
+		roleRepository.save(adminRole);
 
-			var newAdminUser = new Employee(null, "Admin", "Admin", "Admin", "admin",
-					passwordEncoder.encode("test1234"), null, null,
-					listAdminRoles, true, true, true, true);
-			employeeRepository.save(newAdminUser);
-		}
+		List<Role> listAdminRoles = new ArrayList<>();
+		listAdminRoles.add(adminRole);
+
+		var newAdminUser = new Employee(null, "Admin", "Admin", "Admin", "admin",
+				passwordEncoder.encode("admin12345"), null, null,
+				listAdminRoles, true, true, true, true);
+		employeeRepository.save(newAdminUser);
 	}
 
 }
