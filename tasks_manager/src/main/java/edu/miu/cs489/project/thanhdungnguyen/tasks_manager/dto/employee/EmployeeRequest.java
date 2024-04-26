@@ -7,6 +7,7 @@ public record EmployeeRequest(String firstName,
         String position,
         String username,
         String password,
+        String email,
         Long managerId,
         List<String> roles) {
 

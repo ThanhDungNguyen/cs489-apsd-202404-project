@@ -6,12 +6,14 @@ import edu.miu.cs489.project.thanhdungnguyen.tasks_manager.model.Employee;
 public class EmployeeAdapter {
     public static Employee getEmployeeFromEmployeeRequest(EmployeeRequest employeeRequest) {
         return new Employee(null, employeeRequest.firstName(), employeeRequest.lastName(), employeeRequest.position(),
-                employeeRequest.username(), employeeRequest.password(), null, null, null, true, true, true, true);
+                employeeRequest.username(), employeeRequest.password(), employeeRequest.email(), null, null, null, true,
+                true,
+                true, true);
     }
 
     public static EmployeeResponse getEmployeeResponseFromEmployee(Employee employee) {
         return new EmployeeResponse(employee.getEmployeeId(), employee.getFirstName(), employee.getLastName(),
-                employee.getPosition());
+                employee.getPosition(), employee.getUsername(), employee.getEmail());
     }
 
     public static EmployeeFullResponse getEmployeeFullResponseFromEmployee(Employee employee) {
@@ -24,6 +26,6 @@ public class EmployeeAdapter {
 
     public static EmployeeResponse getManagerResponseFromManager(Employee employee) {
         return new EmployeeResponse(employee.getEmployeeId(), employee.getFirstName(), employee.getLastName(),
-                employee.getPosition());
+                employee.getPosition(), employee.getUsername(), employee.getEmail());
     }
 }

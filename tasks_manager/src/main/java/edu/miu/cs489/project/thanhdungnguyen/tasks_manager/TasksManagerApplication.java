@@ -36,7 +36,7 @@ public class TasksManagerApplication {
 		listAdminRoles.add(adminRole);
 
 		var newAdminUser = new Employee(null, "Admin", "Admin", "Admin", "admin",
-				passwordEncoder.encode("admin12345"), null, null,
+				passwordEncoder.encode("admin12345"), "admin@email.com", null, null,
 				listAdminRoles, true, true, true, true);
 		employeeRepository.save(newAdminUser);
 	}
