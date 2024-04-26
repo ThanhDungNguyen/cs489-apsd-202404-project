@@ -23,7 +23,7 @@ public class EmployeeAdapter {
                 : employee.getTasks().stream().map(task -> TaskAdapter.getTaskResponseFromTask(task)).toList();
         return new EmployeeFullResponse(employee.getEmployeeId(), employee.getFirstName(),
                 employee.getLastName(),
-                employee.getPosition(), managerResponse, taskReponses);
+                employee.getPosition(), employee.getUsername(), employee.getEmail(), managerResponse, taskReponses);
     }
 
     public static EmployeeResponse getManagerResponseFromManager(Employee employee) {

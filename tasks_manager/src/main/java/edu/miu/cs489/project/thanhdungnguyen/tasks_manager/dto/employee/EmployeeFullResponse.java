@@ -8,6 +8,8 @@ public record EmployeeFullResponse(Long employeeId,
         String firstName,
         String lastName,
         String position,
+        String username,
+        String email,
         EmployeeResponse manager,
         List<TaskResponse> tasks) {
 

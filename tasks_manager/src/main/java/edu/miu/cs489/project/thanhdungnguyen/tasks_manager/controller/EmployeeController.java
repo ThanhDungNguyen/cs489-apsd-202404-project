@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import edu.miu.cs489.project.thanhdungnguyen.tasks_manager.dto.employee.EmployeeRequest;
-import edu.miu.cs489.project.thanhdungnguyen.tasks_manager.dto.employee.EmployeeResponse;
 import edu.miu.cs489.project.thanhdungnguyen.tasks_manager.dto.employee.EmployeeFullResponse;
 import edu.miu.cs489.project.thanhdungnguyen.tasks_manager.exception.DataNotFoundException;
 import edu.miu.cs489.project.thanhdungnguyen.tasks_manager.service.EmployeeService;
