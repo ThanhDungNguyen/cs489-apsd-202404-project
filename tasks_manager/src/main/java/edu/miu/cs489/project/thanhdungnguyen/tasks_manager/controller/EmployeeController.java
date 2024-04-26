@@ -24,22 +24,15 @@ public class EmployeeController {
     private EmployeeService employeeService;
 
     @PostMapping(value = "/add")
-    public ResponseEntity<?> addNewEmployee(@RequestBody @Valid EmployeeRequest employeeRequest) {
-        try {
-            var addedEmployeeResponse = employeeService.addNewEmployee(employeeRequest);
-            return new ResponseEntity<EmployeeResponse>(addedEmployeeResponse, HttpStatus.CREATED);
-        } catch (DataNotFoundException exception) {
-            return new ResponseEntity<String>(exception.getMessage(), HttpStatus.NOT_FOUND);
-        }
+    public ResponseEntity<?> addNewEmployee(@RequestBody @Valid EmployeeRequest employeeRequest)
+            throws DataNotFoundException {
+        var addedEmployeeResponse = employeeService.addNewEmployee(employeeRequest);
+        return new ResponseEntity<EmployeeResponse>(addedEmployeeResponse, HttpStatus.CREATED);
     }
 
     @GetMapping(value = "/{employeeId}")
-    public ResponseEntity<?> getEmployeeById(@PathVariable Long employeeId) {
-        try {
-            var employeeResponse = employeeService.getEmployeeById(employeeId);
-            return new ResponseEntity<EmployeeFullResponse>(employeeResponse, HttpStatus.OK);
-        } catch (DataNotFoundException exception) {
-            return new ResponseEntity<String>(exception.getMessage(), HttpStatus.NOT_FOUND);
-        }
+    public ResponseEntity<?> getEmployeeById(@PathVariable Long employeeId) throws DataNotFoundException {
+        var employeeResponse = employeeService.getEmployeeById(employeeId);
+        return new ResponseEntity<EmployeeFullResponse>(employeeResponse, HttpStatus.OK);
     }
 }

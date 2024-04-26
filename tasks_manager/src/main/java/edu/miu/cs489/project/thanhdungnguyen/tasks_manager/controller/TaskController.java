@@ -30,22 +30,14 @@ public class TaskController {
     }
 
     @PutMapping(value = "/{taskId}/assign/{employeeId}")
-    public ResponseEntity<?> assignTaskToEmployee(@PathVariable Long taskId, @PathVariable Long employeeId) {
-        try {
-            var updatedTaskResponse = taskService.assignTaskToEmployee(taskId, employeeId);
-            return new ResponseEntity<TaskResponseWithEmployee>(updatedTaskResponse, HttpStatus.ACCEPTED);
-        } catch (DataNotFoundException exception) {
-            return new ResponseEntity<String>(exception.getMessage(), HttpStatus.NOT_FOUND);
-        }
+    public ResponseEntity<?> assignTaskToEmployee(@PathVariable Long taskId, @PathVariable Long employeeId) throws DataNotFoundException {
+        var updatedTaskResponse = taskService.assignTaskToEmployee(taskId, employeeId);
+        return new ResponseEntity<TaskResponseWithEmployee>(updatedTaskResponse, HttpStatus.ACCEPTED);
     }
 
     @PatchMapping(value = "/{taskId}/edit")
-    public ResponseEntity<?> updateTask(@PathVariable Long taskId, @RequestBody TaskRequest taskRequest) {
-        try {
+    public ResponseEntity<?> updateTask(@PathVariable Long taskId, @RequestBody TaskRequest taskRequest) throws DataNotFoundException {
             var updatedTaskResponse = taskService.updateTask(taskId, taskRequest);
             return new ResponseEntity<TaskResponseWithEmployee>(updatedTaskResponse, HttpStatus.ACCEPTED);
-        } catch (DataNotFoundException exception) {
-            return new ResponseEntity<String>(exception.getMessage(), HttpStatus.NOT_FOUND);
-        }
     }
 }

@@ -16,9 +16,9 @@ import edu.miu.cs489.project.thanhdungnguyen.tasks_manager.exception.DataNotFoun
 public class WebAPIExceptionHandler {
     @ExceptionHandler(DataNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public Map<String, String> handlePublisherNotFoundException(DataNotFoundException noDataException) {
+    public Map<String, String> handleDataNotFoundException(DataNotFoundException dataNotFoundException) {
         Map<String, String> errorMessageMap = new HashMap<>();
-        errorMessageMap.put("errorMessage", noDataException.getMessage());
+        errorMessageMap.put("errorMessage", dataNotFoundException.getMessage());
         return errorMessageMap;
     }
 
