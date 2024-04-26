@@ -27,7 +27,7 @@ public class EmployeeController {
     public ResponseEntity<?> addNewEmployee(@RequestBody @Valid EmployeeRequest employeeRequest)
             throws DataNotFoundException {
         var addedEmployeeResponse = employeeService.addNewEmployee(employeeRequest);
-        return new ResponseEntity<EmployeeResponse>(addedEmployeeResponse, HttpStatus.CREATED);
+        return new ResponseEntity<EmployeeFullResponse>(addedEmployeeResponse, HttpStatus.CREATED);
     }
 
     @GetMapping(value = "/{employeeId}")

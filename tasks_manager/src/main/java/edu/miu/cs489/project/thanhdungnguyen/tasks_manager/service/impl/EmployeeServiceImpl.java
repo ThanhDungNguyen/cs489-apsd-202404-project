@@ -24,7 +24,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     private RoleRepository roleRepository;
 
     @Override
-    public EmployeeResponse addNewEmployee(@Valid EmployeeRequest employeeRequest) throws DataNotFoundException {
+    public EmployeeFullResponse addNewEmployee(@Valid EmployeeRequest employeeRequest) throws DataNotFoundException {
         var employee = EmployeeAdapter.getEmployeeFromEmployeeRequest(employeeRequest);
 
         var managerId = employeeRequest.managerId();
@@ -46,7 +46,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         }
 
         employeeRepository.save(employee);
-        return EmployeeAdapter.getEmployeeResponseFromEmployee(employee);
+        return EmployeeAdapter.getEmployeeFullResponseFromEmployee(employee);
     }
 
     @Override

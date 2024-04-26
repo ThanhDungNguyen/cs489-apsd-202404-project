@@ -17,8 +17,10 @@ public class EmployeeAdapter {
     }
 
     public static EmployeeFullResponse getEmployeeFullResponseFromEmployee(Employee employee) {
-        var managerResponse = EmployeeAdapter.getManagerResponseFromManager(employee.getManager());
-        var taskReponses = employee.getTasks().stream().map(task -> TaskAdapter.getTaskResponseFromTask(task)).toList();
+        var managerResponse = employee.getManager() == null ? null
+                : EmployeeAdapter.getManagerResponseFromManager(employee.getManager());
+        var taskReponses = employee.getTasks() == null ? null
+                : employee.getTasks().stream().map(task -> TaskAdapter.getTaskResponseFromTask(task)).toList();
         return new EmployeeFullResponse(employee.getEmployeeId(), employee.getFirstName(),
                 employee.getLastName(),
                 employee.getPosition(), managerResponse, taskReponses);
