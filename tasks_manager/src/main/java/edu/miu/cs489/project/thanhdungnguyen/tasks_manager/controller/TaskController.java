@@ -1,8 +1,11 @@
 package edu.miu.cs489.project.thanhdungnguyen.tasks_manager.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,6 +27,12 @@ public class TaskController {
     @Autowired
     private TaskService taskService;
 
+    @GetMapping(value = "/list")
+    public ResponseEntity<List<TaskResponse>> getAllTasks() {
+        var taskReponses = taskService.getAllTasks();
+        return new ResponseEntity<>(taskReponses, HttpStatus.OK);
+    }
+
     @PostMapping(value = "/add")
     public ResponseEntity<TaskResponse> addNewTask(@RequestBody @Valid TaskRequest taskRequest) {
         var newTaskResponse = taskService.addNewTask(taskRequest);
@@ -31,14 +40,16 @@ public class TaskController {
     }
 
     @PutMapping(value = "/{taskId}/assign/{employeeId}")
-    public ResponseEntity<?> assignTaskToEmployee(@PathVariable Long taskId, @PathVariable Long employeeId) throws DataNotFoundException {
+    public ResponseEntity<?> assignTaskToEmployee(@PathVariable Long taskId, @PathVariable Long employeeId)
+            throws DataNotFoundException {
         var updatedTaskResponse = taskService.assignTaskToEmployee(taskId, employeeId);
         return new ResponseEntity<TaskResponseWithEmployee>(updatedTaskResponse, HttpStatus.ACCEPTED);
     }
 
     @PatchMapping(value = "/{taskId}/edit")
-    public ResponseEntity<?> updateTask(@PathVariable Long taskId, @RequestBody TaskRequest taskRequest) throws DataNotFoundException {
-            var updatedTaskResponse = taskService.updateTask(taskId, taskRequest);
-            return new ResponseEntity<TaskResponseWithEmployee>(updatedTaskResponse, HttpStatus.ACCEPTED);
+    public ResponseEntity<?> updateTask(@PathVariable Long taskId, @RequestBody TaskRequest taskRequest)
+            throws DataNotFoundException {
+        var updatedTaskResponse = taskService.updateTask(taskId, taskRequest);
+        return new ResponseEntity<TaskResponseWithEmployee>(updatedTaskResponse, HttpStatus.ACCEPTED);
     }
 }
