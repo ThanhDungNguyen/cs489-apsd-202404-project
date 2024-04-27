@@ -1,0 +1,135 @@
+<mxfile host="app.diagrams.net" modified="2024-04-26T23:05:53.823Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36" etag="mUJembs6VqLZ3ikyUXSd" version="24.2.7" type="device">
+  <diagram name="Page-1" id="e7e014a7-5840-1c2e-5031-d8a46d1fe8dd">
+    <mxGraphModel dx="1434" dy="795" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="826" background="none" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="HfVkwMCQKq5Lk4RBqd3m-41" value="Browser" style="swimlane;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="40" y="40" width="160" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="HfVkwMCQKq5Lk4RBqd3m-42" value="Client Application&lt;div&gt;(Angular, HTML, CSS...)&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="HfVkwMCQKq5Lk4RBqd3m-41" vertex="1">
+          <mxGeometry x="20" y="40" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="YkkFZ1ScjA_BKmvN7hJY-1" value="REST Controllers" style="swimlane;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="320" y="80" width="160" height="280" as="geometry" />
+        </mxCell>
+        <mxCell id="YkkFZ1ScjA_BKmvN7hJY-2" value="User Authentication&lt;div&gt;Controller&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="YkkFZ1ScjA_BKmvN7hJY-1" vertex="1">
+          <mxGeometry x="20" y="40" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="YkkFZ1ScjA_BKmvN7hJY-3" value="Employee&lt;div&gt;Controller&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="YkkFZ1ScjA_BKmvN7hJY-1" vertex="1">
+          <mxGeometry x="20" y="100" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="YkkFZ1ScjA_BKmvN7hJY-4" value="Sprint&lt;div&gt;Controller&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="YkkFZ1ScjA_BKmvN7hJY-1" vertex="1">
+          <mxGeometry x="20" y="160" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="YkkFZ1ScjA_BKmvN7hJY-5" value="Task&lt;div&gt;Controller&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="YkkFZ1ScjA_BKmvN7hJY-1" vertex="1">
+          <mxGeometry x="20" y="220" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="YkkFZ1ScjA_BKmvN7hJY-6" value="Services" style="swimlane;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="480" y="80" width="160" height="280" as="geometry" />
+        </mxCell>
+        <mxCell id="YkkFZ1ScjA_BKmvN7hJY-7" value="User Details&lt;div&gt;Service&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="YkkFZ1ScjA_BKmvN7hJY-6" vertex="1">
+          <mxGeometry x="20" y="40" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="YkkFZ1ScjA_BKmvN7hJY-8" value="Employee&lt;div&gt;Service&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="YkkFZ1ScjA_BKmvN7hJY-6" vertex="1">
+          <mxGeometry x="20" y="100" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="YkkFZ1ScjA_BKmvN7hJY-9" value="Sprint&lt;div&gt;Service&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="YkkFZ1ScjA_BKmvN7hJY-6" vertex="1">
+          <mxGeometry x="20" y="160" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="YkkFZ1ScjA_BKmvN7hJY-10" value="Task&lt;div&gt;Service&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="YkkFZ1ScjA_BKmvN7hJY-6" vertex="1">
+          <mxGeometry x="20" y="220" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="YkkFZ1ScjA_BKmvN7hJY-11" value="Domain Models" style="swimlane;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="640" y="80" width="160" height="280" as="geometry" />
+        </mxCell>
+        <mxCell id="YkkFZ1ScjA_BKmvN7hJY-12" value="Role" style="rounded=1;whiteSpace=wrap;html=1;" parent="YkkFZ1ScjA_BKmvN7hJY-11" vertex="1">
+          <mxGeometry x="20" y="40" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="YkkFZ1ScjA_BKmvN7hJY-13" value="Employee" style="rounded=1;whiteSpace=wrap;html=1;" parent="YkkFZ1ScjA_BKmvN7hJY-11" vertex="1">
+          <mxGeometry x="20" y="100" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="YkkFZ1ScjA_BKmvN7hJY-14" value="Sprint" style="rounded=1;whiteSpace=wrap;html=1;" parent="YkkFZ1ScjA_BKmvN7hJY-11" vertex="1">
+          <mxGeometry x="20" y="160" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="YkkFZ1ScjA_BKmvN7hJY-15" value="Task" style="rounded=1;whiteSpace=wrap;html=1;" parent="YkkFZ1ScjA_BKmvN7hJY-11" vertex="1">
+          <mxGeometry x="20" y="220" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="YkkFZ1ScjA_BKmvN7hJY-17" value="Data Access" style="swimlane;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="800" y="80" width="160" height="280" as="geometry" />
+        </mxCell>
+        <mxCell id="YkkFZ1ScjA_BKmvN7hJY-18" value="Role&lt;div&gt;Repository&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="YkkFZ1ScjA_BKmvN7hJY-17" vertex="1">
+          <mxGeometry x="20" y="40" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="YkkFZ1ScjA_BKmvN7hJY-19" value="Employee&lt;div&gt;Repository&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="YkkFZ1ScjA_BKmvN7hJY-17" vertex="1">
+          <mxGeometry x="20" y="100" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="YkkFZ1ScjA_BKmvN7hJY-20" value="Sprint&lt;div&gt;Repository&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="YkkFZ1ScjA_BKmvN7hJY-17" vertex="1">
+          <mxGeometry x="20" y="160" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="YkkFZ1ScjA_BKmvN7hJY-21" value="Task&lt;div&gt;Repository&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="YkkFZ1ScjA_BKmvN7hJY-17" vertex="1">
+          <mxGeometry x="20" y="220" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="YkkFZ1ScjA_BKmvN7hJY-23" value="Database&lt;div&gt;(MySQL)&lt;/div&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+          <mxGeometry x="1080" y="135" width="110" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="YkkFZ1ScjA_BKmvN7hJY-25" value="Spring Application" style="swimlane;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxGeometry x="300" y="40" width="680" height="520" as="geometry" />
+        </mxCell>
+        <mxCell id="uUgGPAuZvKOpsxRCqti3-2" value="DTO" style="swimlane;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="YkkFZ1ScjA_BKmvN7hJY-25">
+          <mxGeometry x="20" y="340" width="310" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="uUgGPAuZvKOpsxRCqti3-3" value="User Authentication&lt;div&gt;DTO&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="uUgGPAuZvKOpsxRCqti3-2">
+          <mxGeometry x="20" y="40" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="uUgGPAuZvKOpsxRCqti3-4" value="Role&amp;nbsp;&lt;span style=&quot;background-color: initial;&quot;&gt;DTO&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="uUgGPAuZvKOpsxRCqti3-2">
+          <mxGeometry x="210" y="100" width="90" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="uUgGPAuZvKOpsxRCqti3-5" value="Employee DTO" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="uUgGPAuZvKOpsxRCqti3-2">
+          <mxGeometry x="180" y="40" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="uUgGPAuZvKOpsxRCqti3-6" value="Sprint DTO" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="uUgGPAuZvKOpsxRCqti3-2">
+          <mxGeometry x="20" y="100" width="70" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="uUgGPAuZvKOpsxRCqti3-7" value="Task DTO" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="uUgGPAuZvKOpsxRCqti3-2">
+          <mxGeometry x="110" y="100" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="uUgGPAuZvKOpsxRCqti3-8" value="Integration" style="swimlane;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="YkkFZ1ScjA_BKmvN7hJY-25">
+          <mxGeometry x="350" y="340" width="310" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="uUgGPAuZvKOpsxRCqti3-9" value="JWT Authentication" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="uUgGPAuZvKOpsxRCqti3-8">
+          <mxGeometry x="20" y="40" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="uUgGPAuZvKOpsxRCqti3-10" value="Controller Exception&lt;div&gt;Advice&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="uUgGPAuZvKOpsxRCqti3-8">
+          <mxGeometry x="180" y="40" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="YkkFZ1ScjA_BKmvN7hJY-27" value="" style="shape=flexArrow;endArrow=classic;startArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="YkkFZ1ScjA_BKmvN7hJY-17" target="YkkFZ1ScjA_BKmvN7hJY-23" edge="1">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="1030" y="470" as="sourcePoint" />
+            <mxPoint x="1130" y="370" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="YkkFZ1ScjA_BKmvN7hJY-28" value="HTTP Requests" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" parent="1" source="HfVkwMCQKq5Lk4RBqd3m-42" target="YkkFZ1ScjA_BKmvN7hJY-1" edge="1">
+          <mxGeometry x="-0.1132" y="29" width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="460" y="260" as="sourcePoint" />
+            <mxPoint x="510" y="210" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="YkkFZ1ScjA_BKmvN7hJY-29" value="Mobile" style="swimlane;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="40" y="220" width="160" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="YkkFZ1ScjA_BKmvN7hJY-30" value="Client Application&lt;div&gt;(Futter,&lt;/div&gt;&lt;div&gt;React Native...)&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="YkkFZ1ScjA_BKmvN7hJY-29" vertex="1">
+          <mxGeometry x="20" y="40" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="YkkFZ1ScjA_BKmvN7hJY-31" value="HTTP Requests" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="YkkFZ1ScjA_BKmvN7hJY-30" target="YkkFZ1ScjA_BKmvN7hJY-1" edge="1">
+          <mxGeometry x="-0.2" y="-31" width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="190" y="160" as="sourcePoint" />
+            <mxPoint x="330" y="265" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
