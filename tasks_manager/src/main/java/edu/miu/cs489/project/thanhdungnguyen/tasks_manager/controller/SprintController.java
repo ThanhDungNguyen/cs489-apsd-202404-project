@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import edu.miu.cs489.project.thanhdungnguyen.tasks_manager.dto.sprint.SprintRequest;
 import edu.miu.cs489.project.thanhdungnguyen.tasks_manager.dto.sprint.SprintResponse;
 import edu.miu.cs489.project.thanhdungnguyen.tasks_manager.dto.sprint.SprintResponseWithTasks;
+import edu.miu.cs489.project.thanhdungnguyen.tasks_manager.dto.sprint.SprintStatusResponse;
 import edu.miu.cs489.project.thanhdungnguyen.tasks_manager.exception.DataNotFoundException;
 import edu.miu.cs489.project.thanhdungnguyen.tasks_manager.service.SprintService;
 import jakarta.validation.Valid;
@@ -26,7 +27,8 @@ public class SprintController {
     private SprintService sprintService;
 
     @GetMapping(value = "/{sprintId}")
-    public ResponseEntity<SprintResponseWithTasks> getSprintWithTask(@PathVariable Long sprintId) throws DataNotFoundException {
+    public ResponseEntity<SprintResponseWithTasks> getSprintWithTask(@PathVariable Long sprintId)
+            throws DataNotFoundException {
         var sprintReponseWithTasks = sprintService.getSprintWithTasks(sprintId);
         return new ResponseEntity<>(sprintReponseWithTasks, HttpStatus.OK);
     }
@@ -42,5 +44,12 @@ public class SprintController {
             @PathVariable Long taskId) throws DataNotFoundException {
         var updatedSprintResponse = sprintService.addTask(sprintId, taskId);
         return new ResponseEntity<>(updatedSprintResponse, HttpStatus.ACCEPTED);
+    }
+
+    @GetMapping(value = "/{sprintId}/status")
+    public ResponseEntity<SprintStatusResponse> getSprintStatus(@PathVariable Long sprintId)
+            throws DataNotFoundException {
+        var sprintReponseWithTasks = sprintService.getSprintStatus(sprintId);
+        return new ResponseEntity<>(sprintReponseWithTasks, HttpStatus.OK);
     }
 }

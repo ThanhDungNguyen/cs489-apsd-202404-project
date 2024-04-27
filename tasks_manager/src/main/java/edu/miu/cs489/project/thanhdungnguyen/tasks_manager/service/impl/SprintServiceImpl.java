@@ -7,6 +7,8 @@ import edu.miu.cs489.project.thanhdungnguyen.tasks_manager.dto.sprint.SprintAdap
 import edu.miu.cs489.project.thanhdungnguyen.tasks_manager.dto.sprint.SprintRequest;
 import edu.miu.cs489.project.thanhdungnguyen.tasks_manager.dto.sprint.SprintResponse;
 import edu.miu.cs489.project.thanhdungnguyen.tasks_manager.dto.sprint.SprintResponseWithTasks;
+import edu.miu.cs489.project.thanhdungnguyen.tasks_manager.dto.sprint.SprintStatusResponse;
+import edu.miu.cs489.project.thanhdungnguyen.tasks_manager.dto.task.TaskAdapter;
 import edu.miu.cs489.project.thanhdungnguyen.tasks_manager.exception.DataNotFoundException;
 import edu.miu.cs489.project.thanhdungnguyen.tasks_manager.repository.SprintRepository;
 import edu.miu.cs489.project.thanhdungnguyen.tasks_manager.repository.TaskRepository;
@@ -44,6 +46,18 @@ public class SprintServiceImpl implements SprintService {
         sprint.addTask(task);
         sprintRepository.save(sprint);
         return SprintAdapter.getSprintResponseWithTasksFromSprint(sprint);
+    }
+
+    @Override
+    public SprintStatusResponse getSprintStatus(Long sprintId) throws DataNotFoundException {
+        var sprint = sprintRepository.findById(sprintId).orElseThrow(
+                () -> new DataNotFoundException(String.format("Sprint with ID, %d, cannot be found", sprintId)));
+        var onGoingTasks = sprint.getTasks().stream().filter(task -> task.getFinishTime() == null)
+                .map(task -> TaskAdapter.getTaskResponseFromTask(task)).toList();
+        var finishedTasks = sprint.getTasks().stream().filter(task -> task.getFinishTime() != null)
+                .map(task -> TaskAdapter.getTaskResponseFromTask(task)).toList();
+        return new SprintStatusResponse(sprint.getSprintId(), sprint.getTitle(), sprint.getStartDate(),
+                sprint.getEndDate(), onGoingTasks, finishedTasks);
     }
 
 }
