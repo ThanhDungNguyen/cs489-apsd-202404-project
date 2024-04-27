@@ -52,12 +52,16 @@ public class SprintServiceImpl implements SprintService {
     public SprintStatusResponse getSprintStatus(Long sprintId) throws DataNotFoundException {
         var sprint = sprintRepository.findById(sprintId).orElseThrow(
                 () -> new DataNotFoundException(String.format("Sprint with ID, %d, cannot be found", sprintId)));
-        var onGoingTasks = sprint.getTasks().stream().filter(task -> task.getFinishTime() == null)
+        var pendingTasks = sprint.getTasks().stream().filter(task -> task.getStartTime() == null)
                 .map(task -> TaskAdapter.getTaskResponseFromTask(task)).toList();
-        var finishedTasks = sprint.getTasks().stream().filter(task -> task.getFinishTime() != null)
+        var onGoingTasks = sprint.getTasks().stream()
+                .filter(task -> task.getStartTime() != null && task.getFinishTime() == null)
+                .map(task -> TaskAdapter.getTaskResponseFromTask(task)).toList();
+        var finishedTasks = sprint.getTasks().stream()
+                .filter(task -> task.getStartTime() != null && task.getFinishTime() != null)
                 .map(task -> TaskAdapter.getTaskResponseFromTask(task)).toList();
         return new SprintStatusResponse(sprint.getSprintId(), sprint.getTitle(), sprint.getStartDate(),
-                sprint.getEndDate(), onGoingTasks, finishedTasks);
+                sprint.getEndDate(), pendingTasks, onGoingTasks, finishedTasks);
     }
 
 }

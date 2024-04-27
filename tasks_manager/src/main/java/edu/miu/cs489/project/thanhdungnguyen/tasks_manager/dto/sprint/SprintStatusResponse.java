@@ -9,6 +9,7 @@ public record SprintStatusResponse(Long sprintId,
         String title,
         LocalDate startDate,
         LocalDate endDate,
+        List<TaskResponse> pendingTasks,
         List<TaskResponse> onGoingTasks,
         List<TaskResponse> finishedTasks) {
 
