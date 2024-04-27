@@ -1,8 +1,10 @@
 package edu.miu.cs489.project.thanhdungnguyen.tasks_manager.controller;
 
+import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -22,6 +24,12 @@ import jakarta.validation.Valid;
 public class SprintController {
     @Autowired
     private SprintService sprintService;
+
+    @GetMapping(value = "/{sprintId}")
+    public ResponseEntity<SprintResponseWithTasks> getSprintWithTask(@PathVariable Long sprintId) throws DataNotFoundException {
+        var sprintReponseWithTasks = sprintService.getSprintWithTasks(sprintId);
+        return new ResponseEntity<>(sprintReponseWithTasks, HttpStatus.OK);
+    }
 
     @PostMapping(value = "/add")
     public ResponseEntity<SprintResponse> addNewSprint(@RequestBody @Valid SprintRequest sprintRequest) {

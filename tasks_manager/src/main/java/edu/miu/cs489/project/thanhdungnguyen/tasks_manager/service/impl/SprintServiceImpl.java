@@ -21,6 +21,13 @@ public class SprintServiceImpl implements SprintService {
     private TaskRepository taskRepository;
 
     @Override
+    public SprintResponseWithTasks getSprintWithTasks(Long sprintId) throws DataNotFoundException {
+        var sprint = sprintRepository.findById(sprintId).orElseThrow(
+                () -> new DataNotFoundException(String.format("Sprint with ID, %d, cannot be found", sprintId)));
+        return SprintAdapter.getSprintResponseWithTasksFromSprint(sprint);
+    }
+
+    @Override
     public SprintResponse addNewSprint(@Valid SprintRequest sprintRequest) {
         var sprint = SprintAdapter.getSprintFromSprintRequest(sprintRequest);
         sprintRepository.save(sprint);

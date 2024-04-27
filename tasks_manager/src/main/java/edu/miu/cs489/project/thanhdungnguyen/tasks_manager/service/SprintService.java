@@ -7,6 +7,8 @@ import edu.miu.cs489.project.thanhdungnguyen.tasks_manager.exception.DataNotFoun
 import jakarta.validation.Valid;
 
 public interface SprintService {
+    SprintResponseWithTasks getSprintWithTasks(Long sprintId) throws DataNotFoundException;
+
     SprintResponse addNewSprint(@Valid SprintRequest sprintRequest);
 
     SprintResponseWithTasks addTask(Long sprintId, Long taskId) throws DataNotFoundException;
