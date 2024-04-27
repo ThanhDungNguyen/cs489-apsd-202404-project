@@ -15,5 +15,5 @@ public interface TaskService {
 
     TaskResponseWithEmployee assignTaskToEmployee(Long taskId, Long employeeId) throws DataNotFoundException;
 
-    TaskResponseWithEmployee updateTask(Long taskId, TaskRequest updatedTask) throws DataNotFoundException;
+    TaskResponse updateTask(Long taskId, TaskRequest updatedTask) throws DataNotFoundException;
 }

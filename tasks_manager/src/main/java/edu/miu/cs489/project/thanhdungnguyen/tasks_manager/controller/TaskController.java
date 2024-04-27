@@ -40,16 +40,17 @@ public class TaskController {
     }
 
     @PutMapping(value = "/{taskId}/assign/{employeeId}")
-    public ResponseEntity<?> assignTaskToEmployee(@PathVariable Long taskId, @PathVariable Long employeeId)
+    public ResponseEntity<TaskResponseWithEmployee> assignTaskToEmployee(@PathVariable Long taskId,
+            @PathVariable Long employeeId)
             throws DataNotFoundException {
         var updatedTaskResponse = taskService.assignTaskToEmployee(taskId, employeeId);
-        return new ResponseEntity<TaskResponseWithEmployee>(updatedTaskResponse, HttpStatus.ACCEPTED);
+        return new ResponseEntity<>(updatedTaskResponse, HttpStatus.ACCEPTED);
     }
 
     @PatchMapping(value = "/{taskId}/edit")
-    public ResponseEntity<?> updateTask(@PathVariable Long taskId, @RequestBody TaskRequest taskRequest)
+    public ResponseEntity<TaskResponse> updateTask(@PathVariable Long taskId, @RequestBody TaskRequest taskRequest)
             throws DataNotFoundException {
         var updatedTaskResponse = taskService.updateTask(taskId, taskRequest);
-        return new ResponseEntity<TaskResponseWithEmployee>(updatedTaskResponse, HttpStatus.ACCEPTED);
+        return new ResponseEntity<>(updatedTaskResponse, HttpStatus.ACCEPTED);
     }
 }
