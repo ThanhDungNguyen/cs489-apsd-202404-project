@@ -31,4 +31,8 @@ public class Sprint {
     @OneToMany
     @JoinColumn(name = "sprint_id")
     private List<Task> tasks;
+
+    public void addTask(Task task) {
+        tasks.add(task);
+    }
 }
